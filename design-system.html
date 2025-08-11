@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hamann Design System - Live Preview</title>
+    <style>
+        /* ========================================
+           DR. HAMANN DESIGN SYSTEM
+           ======================================== */
+        
+        /* FOUNDATION */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+        }
+        
+        :root {
+            /* FONTS */
+            --font-primary: 'Iowan Old Style', 'Palatino Linotype', serif;
+            --font-heading: Optima, Candara, 'Noto Sans', sans-serif;
+            
+            /* FLUID SPACING */
+            --space-s: clamp(0.5rem, 2vw, 1rem);
+            --space-m: clamp(1rem, 3vw, 2rem);
+            --space-l: clamp(2rem, 5vw, 4rem);
+            
+            /* COLORS */
+            --color-text: #1F2937;
+            --color-text-light: #374151;
+            --color-accent: #D97706;
+            --color-accent-dark: #B45309;
+            --color-background: #FFFFFF;
+            --color-background-alt: #FEF3E2;
+        }
+        
+        /* TYPOGRAPHY */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-background);
+            padding: var(--space-m);
+        }
+        
+        h1, h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            line-height: 1.2;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-s);
+        }
+        
+        h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            line-height: 1.2;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-s);
+        }
+        
+        p {
+            margin-bottom: var(--space-m);
+            text-wrap: pretty;
+        }
+        
+        small, .meta {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: var(--color-text-light);
+        }
+        
+        /* LINKS */
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--color-accent-dark);
+            text-decoration: underline;
+        }
+        
+        /* LAYOUT */
+        .layout-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-m);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .sidebar {
+            flex-basis: 250px;
+            flex-grow: 1;
+            background: var(--color-background-alt);
+            padding: var(--space-m);
+            border-radius: 8px;
+        }
+        
+        .content {
+            flex-basis: 0;
+            flex-grow: 999;
+            min-inline-size: 60%;
+        }
+        
+        /* COMPONENTS */
+        .card {
+            background: var(--color-background);
+            border: 1px solid var(--color-background-alt);
+            padding: var(--space-m);
+            border-radius: 8px;
+            margin-bottom: var(--space-m);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .button {
+            background: var(--color-accent);
+            color: white;
+            padding: var(--space-s) var(--space-m);
+            border: none;
+            border-radius: 4px;
+            font-size: inherit;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .button:hover {
+            background: var(--color-accent-dark);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .button-secondary {
+            background: var(--color-text-light);
+        }
+        
+        /* NAVIGATION */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .nav-list li {
+            margin-bottom: var(--space-s);
+        }
+        
+        .nav-list a {
+            display: block;
+            padding: var(--space-s);
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        
+        .nav-list a:hover, .nav-active {
+            background: var(--color-accent);
+            color: white !important;
+            text-decoration: none;
+        }
+        
+        .nav-separator {
+            height: 1px;
+            background: var(--color-text-light);
+            margin: var(--space-s) 0;
+            opacity: 0.3;
+        }
+        
+        /* MOBILE MENU */
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-s);
+            background: var(--color-background);
+            border: 1px solid var(--color-background-alt);
+            border-radius: 8px;
+            margin-bottom: var(--space-m);
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+        
+        .menu-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: var(--space-s);
+            min-width: 44px;
+            min-height: 44px;
+            justify-content: center;
+        }
+        
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--color-text);
+            margin-bottom: 6px;
+            border-radius: 1px;
+        }
+        
+        .hamburger span:last-child {
+            margin-bottom: 0;
+        }
+        
+        .menu-text {
+            font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--color-text);
+        }
+        
+        /* BREADCRUMB */
+        .breadcrumb {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: var(--color-text-light);
+            margin-bottom: var(--space-m);
+        }
+        
+        .breadcrumb a {
+            color: var(--color-accent);
+        }
+        
+        /* CONTENT GRID */
+        .content-grid {
+            display: grid;
+            gap: var(--space-m);
+        }
+        
+        @container (min-width: 600px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .initial-letter::first-letter {
+            font-size: 200%;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+        
+        /* DEMO STYLES */
+        .demo-section {
+            border: 2px dashed var(--color-accent);
+            padding: var(--space-m);
+            margin-bottom: var(--space-l);
+            border-radius: 8px;
+        }
+        
+        .demo-title {
+            background: var(--color-accent);
+            color: white;
+            padding: var(--space-s);
+            margin: calc(-1 * var(--space-m)) calc(-1 * var(--space-m)) var(--space-m) calc(-1 * var(--space-m));
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .color-swatch {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            margin-right: var(--space-s);
+            vertical-align: middle;
+            border: 1px solid var(--color-text-light);
+        }
+        
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-m);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h2 class="demo-title">Dr. Hamann Design System - Live Preview</h2>
+        <p>Alle Komponenten skalieren automatisch mit clamp() - verkleinere das Browserfenster um die Fluid Typography in Aktion zu sehen!</p>
+    </div>
+
+    <!-- TYPOGRAPHY EXAMPLES -->
+    <div class="demo-section">
+        <h3 class="demo-title">Typography Examples</h3>
+        
+        <h1>Dr. David Hamann - Archivrecherche & Transkription</h1>
+        <h2>Recherche-Services</h2>
+        <h3>Personalunterlagen aus dem Nationalsozialismus</h3>
+        
+        <p>Dr. David Hamann bietet professionelle Archivrecherche und historische Dokumententranskription. Mit langjähriger Erfahrung in deutschen und internationalen Archiven unterstützt er Familienforscher und Wissenschaftler bei der Aufarbeitung ihrer Geschichte.</p>
+        
+        <small class="meta">Letzte Aktualisierung: August 2025</small>
+    </div>
+
+    <!-- COLOR PALETTE -->
+    <div class="demo-section">
+        <h3 class="demo-title">Color Palette</h3>
+        
+        <p>
+            <span class="color-swatch" style="background: #1F2937;"></span>
+            <strong>Text:</strong> #1F2937 (Anthrazit)
+        </p>
+        <p>
+            <span class="color-swatch" style="background: #374151;"></span>
+            <strong>Text Light:</strong> #374151 (Dunkelgrau)
+        </p>
+        <p>
+            <span class="color-swatch" style="background: #D97706;"></span>
+            <strong>Accent:</strong> #D97706 (Bernstein)
+        </p>
+        <p>
+            <span class="color-swatch" style="background: #B45309;"></span>
+            <strong>Accent Dark:</strong> #B45309 (Dunkler Bernstein)
+        </p>
+        <p>
+            <span class="color-swatch" style="background: #FFFFFF; border: 2px solid #ccc;"></span>
+            <strong>Background:</strong> #FFFFFF (Weiß)
+        </p>
+        <p>
+            <span class="color-swatch" style="background: #FEF3E2;"></span>
+            <strong>Background Alt:</strong> #FEF3E2 (Creme)
+        </p>
+    </div>
+
+    <!-- MOBILE HEADER -->
+    <div class="demo-section">
+        <h3 class="demo-title">Mobile Header</h3>
+        
+        <header class="mobile-header">
+            <div class="mobile-menu">
+                <label class="menu-button">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="menu-text">MENU</span>
+                </label>
+            </div>
+            <div class="logo">
+                <h3>Dr. David Hamann</h3>
+            </div>
+        </header>
+    </div>
+
+    <!-- LAYOUT SYSTEM -->
+    <div class="demo-section">
+        <h3 class="demo-title">Layout System - Every-Layout Sidebar</h3>
+        
+        <div class="layout-wrapper">
+            <nav class="sidebar">
+                <div class="logo">
+                    <h4>Dr. David Hamann</h4>
+                    <p class="meta">Archivrecherche</p>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-active">Startseite</a></li>
+                    <li><a href="#">Recherche</a></li>
+                    <li><a href="#">Transkription</a></li>
+                    <li><a href="#">Biografie</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li class="nav-separator"></li>
+                    <li><a href="#">Nationalsozialismus</a></li>
+                    <li><a href="#">Zweiter Weltkrieg</a></li>
+                </ul>
+            </nav>
+            
+            <main class="content">
+                <nav class="breadcrumb">
+                    <a href="#">Startseite</a> › 
+                    <a href="#">Nationalsozialismus</a> › 
+                    <span>Personalunterlagen</span>
+                </nav>
+                
+                <article>
+                    <h2>Willkommen</h2>
+                    <p class="initial-letter">Dr. David Hamann bietet professionelle Archivrecherche und historische Dokumententranskription. Mit seiner langjährigen Erfahrung in deutschen und internationalen Archiven unterstützt er sowohl Familienforscher als auch Wissenschaftler bei der systematischen Aufarbeitung ihrer Geschichte.</p>
+                    
+                    <p>Seine Expertise umfasst die Recherche in Archiven des Nationalsozialismus und des Zweiten Weltkriegs, sowie die professionelle Transkription historischer Dokumente in verschiedenen Schriftarten.</p>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- SERVICE CARDS -->
+    <div class="demo-section">
+        <h3 class="demo-title">Service Cards</h3>
+        
+        <div class="grid-demo">
+            <div class="card">
+                <h3>Archivrecherche</h3>
+                <p>Systematische Suche in Archiven nach Dokumenten zu Ihrer Familiengeschichte oder wissenschaftlichen Fragestellung.</p>
+                <a href="#" class="button">Mehr erfahren</a>
+            </div>
+            
+            <div class="card">
+                <h3>Transkription</h3>
+                <p>Professionelle Übertragung historischer Dokumente in moderne, lesbare Form unter Beachtung wissenschaftlicher Standards.</p>
+                <a href="#" class="button">Mehr erfahren</a>
+            </div>
+            
+            <div class="card">
+                <h3>Beratung</h3>
+                <p>Persönliche Beratung zu Recherche-Strategien und Interpretation historischer Quellen.</p>
+                <a href="#" class="button button-secondary">Kontakt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="demo-section">
+        <h3 class="demo-title">Buttons</h3>
+        
+        <p>
+            <a href="#" class="button">Primärer Button</a>
+            <a href="#" class="button button-secondary">Sekundärer Button</a>
+        </p>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="demo-section">
+        <h3 class="demo-title">Content Grid (Two-Column auf größeren Bildschirmen)</h3>
+        
+        <div class="content-grid">
+            <div>
+                <h4>Recherche-Schwerpunkte</h4>
+                <p>Dr. Hamann spezialisiert sich auf die Recherche in Archiven des 19. und 20. Jahrhunderts, mit besonderem Fokus auf die Zeit des Nationalsozialismus und des Zweiten Weltkriegs.</p>
+            </div>
+            <div>
+                <h4>Transkriptions-Service</h4>
+                <p>Professionelle Übertragung von Dokumenten in Kurrent, Sütterlin und anderen historischen Schriftarten in moderne, digital verfügbare Formate.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3 class="demo-title">Responsive Behavior</h3>
+        <p><strong>Teste die Responsivität:</strong> Verkleinere das Browserfenster um zu sehen, wie das Sidebar-Layout automatisch wrapped und alle Texte fluid skalieren. Bei ~417px Container-Breite springt die Navigation über den Content.</p>
+    </div>
+</body>
+</html>
