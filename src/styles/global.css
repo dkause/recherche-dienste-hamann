@@ -1,72 +1,37 @@
 /* ========================================
-   RECHERCHE-DIENSTE - GLOBAL STYLES
-   Every Layout + Universelles Spacing + Fluid Typography
+   DR. HAMANN DESIGN SYSTEM - COMPACT CSS
+   Fluid Typography + Spacing + Every Layout Sidebar
    ======================================== */
 
-/* FONT STACK OPTIONS - UMSCHALTEN DURCH KOMMENTARE */
-:root {
-  /* ===== OPTION 1: OLD STYLE (Standard) ===== */
-  /* Akademisch, klassisch-historisch, höchste Seriosität */
-  --font-primary: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
-  
-  /* ===== OPTION 2: CLASSICAL HUMANIST ===== */
-  /* Römische Eleganz, zeitlos-professionell, besser für mobile */
-  /* --font-primary: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif; */
-  
-  /* HEADINGS (Optional: Sans-serif für Kontrast) */
-  --font-heading: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
-  
-  /* MONOSPACE (für URLs, Code) */
-  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-  
-  /* UNIVERSELLES SPACING SYSTEM (Every Layout inspiriert) */
-  --s-2: 0.5rem;    /* 8px */
-  --s-1: 0.75rem;   /* 12px */
-  --s0: 1rem;       /* 16px - Basis */
-  --s1: 1.25rem;    /* 20px */
-  --s2: 1.5rem;     /* 24px */
-  --s3: 2rem;       /* 32px */
-  --s4: 3rem;       /* 48px */
-  --s5: 4rem;       /* 64px */
-  
-  /* TYPOGRAFISCHES SYSTEM - Standard + Multiplikatoren */
-  --text-base: 1.125rem; /* 18px - optimale Lesbarkeit für Fließtext */
-  
-  /* Fluid Typography mit clamp() */
-  --text-xl: clamp(calc(var(--text-base) * 1.4), 3vw, calc(var(--text-base) * 1.6)); /* ~25-29px */
-  --text-l:  clamp(calc(var(--text-base) * 1.2), 2.5vw, calc(var(--text-base) * 1.35)); /* ~22-24px */
-  --text-m:  var(--text-base); /* 18px - Standard Fließtext */
-  --text-s:  clamp(calc(var(--text-base) * 0.8), 2vw, calc(var(--text-base) * 0.9)); /* ~14-16px */
-  --text-xs: clamp(calc(var(--text-base) * 0.7), 1.5vw, calc(var(--text-base) * 0.8)); /* ~13-14px */
-  
-  /* LINE HEIGHTS */
-  --line-height-text: 1.6;
-  --line-height-heading: 1.2;
-  
-  /* COLORS - Palette 1: "Warme Autorität" (WCAG AA-konform) */
-  --color-text: #1F2937;        /* Anthrazit - Haupttext (13.4:1 auf Weiß) */
-  --color-text-light: #374151;  /* Dunkelgrau - Sekundärtext (9.5:1 auf Weiß) */
-  --color-accent: #D97706;       /* Bernstein - Links, Akzente (4.8:1 auf Weiß) */
-  --color-accent-dark: #B45309;  /* Dunkler Bernstein - Hover (6.4:1 auf Weiß) */
-  --color-background: #FFFFFF;   /* Weiß - Haupt-Hintergrund */
-  --color-background-alt: #FEF3E2; /* Creme - Alternative Hintergründe */
-}
-
-/* ========================================
-   EVERY LAYOUT FOUNDATION
-   ======================================== */
-
-/* Box Sizing für alle Elemente */
+/* FOUNDATION */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Reset margins */
 * {
   margin: 0;
 }
 
-/* Basis Typography */
+:root {
+  /* FONTS - No Toggle */
+  --font-primary: 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-heading: Optima, Candara, 'Noto Sans', sans-serif;
+  
+  /* FLUID SPACING - 3 Values Only */
+  --space-s: clamp(0.5rem, 2vw, 1rem);    /* 8-16px */
+  --space-m: clamp(1rem, 3vw, 2rem);      /* 16-32px */
+  --space-l: clamp(2rem, 5vw, 4rem);      /* 32-64px */
+  
+  /* COLORS - WCAG AA */
+  --color-text: #1F2937;
+  --color-text-light: #374151;
+  --color-accent: #D97706;
+  --color-accent-dark: #B45309;
+  --color-background: #FFFFFF;
+  --color-background-alt: #FEF3E2;
+}
+
+/* TYPOGRAPHY - Direct clamp() in Elements */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -74,40 +39,39 @@ html {
 
 body {
   font-family: var(--font-primary);
-  font-size: var(--text-m); /* Standard Fließtext */
-  line-height: var(--line-height-text);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);    /* 16-20px Fließtext */
+  line-height: 1.6;
   color: var(--color-text);
   background: var(--color-background);
 }
 
-/* Headings mit fluid scaling */
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-family: var(--font-heading);
-  line-height: var(--line-height-heading);
+  font-size: clamp(1.25rem, 4vw, 2rem);      /* 20-32px */
+  line-height: 1.2;
   font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--s-1);
+  margin-bottom: var(--space-s);
 }
 
-h1 { font-size: var(--text-xl); } /* XL */
-h2 { font-size: var(--text-l); }  /* L */
-h3 { font-size: var(--text-m); }  /* M (Standard) */
-h4 { font-size: var(--text-m); }  /* M */
+h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 3vw, 1.4rem);     /* 18-22px */
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: var(--space-s);
+}
 
-/* Text Elements */
 p {
-  margin-bottom: var(--s1);
-  text-wrap: pretty; /* Moderne Browser */
+  margin-bottom: var(--space-m);
+  text-wrap: pretty;
 }
 
-/* Improve media defaults */
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
+small, .meta {
+  font-size: clamp(0.875rem, 2vw, 1rem);     /* 14-16px */
+  color: var(--color-text-light);
 }
 
-/* Links */
+/* LINKS */
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -118,52 +82,19 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Code/URLs */
-code, pre, .url {
-  font-family: var(--font-mono);
-  font-size: var(--text-s);
-  background: var(--color-background-alt);
-  padding: var(--s-2) var(--s-1);
-  border-radius: calc(var(--s0) / 4);
-}
-
-/* Lists */
-ul, ol {
-  margin-bottom: var(--s1);
-  padding-left: var(--s2);
-}
-
-li {
-  margin-bottom: var(--s-2);
-}
-
-/* ========================================
-   LAYOUT COMPONENTS
-   ======================================== */
-
-/* Layout Container */
-.container {
-  max-width: clamp(320px, 90vw, 1200px);
-  margin: 0 auto;
-  padding: 0 var(--s1);
-}
-
-/* Every-Layout Sidebar Pattern */
+/* EVERY-LAYOUT SIDEBAR */
 .layout-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s2);
+  gap: var(--space-m);
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--s1);
+  padding: 0 var(--space-m);
 }
 
 .sidebar {
   flex-basis: 250px;
   flex-grow: 1;
-  background: var(--color-background-alt);
-  padding: var(--s2);
-  border-radius: calc(var(--s0) / 2);
 }
 
 .content {
@@ -172,50 +103,73 @@ li {
   min-inline-size: 60%;
 }
 
-/* ========================================
-   NAVIGATION COMPONENTS
-   ======================================== */
-
-/* Navigation List */
-.nav-list {
-  list-style: none;
-  padding: 0;
+/* COMPONENTS */
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-background-alt);
+  padding: var(--space-m);
+  border-radius: 8px;
+  margin-bottom: var(--space-m);
 }
 
-.nav-list li {
-  margin-bottom: var(--s-1);
-}
-
-.nav-list a {
-  display: block;
-  padding: var(--s-1);
-  border-radius: calc(var(--s0) / 4);
-  transition: background 0.2s;
-}
-
-.nav-list a:hover, .nav-active {
+.button {
   background: var(--color-accent);
-  color: white !important;
+  color: white;
+  padding: var(--space-s) var(--space-m);
+  border: none;
+  border-radius: 4px;
+  font-size: inherit;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button:hover {
+  background: var(--color-accent-dark);
+  color: white;
   text-decoration: none;
 }
 
-.nav-separator {
-  height: 1px;
+.button-secondary {
   background: var(--color-text-light);
-  margin: var(--s-1) 0;
-  opacity: 0.3;
 }
 
-/* Mobile Header */
+/* MOBILE MENU */
 .mobile-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--s-1);
-  background: var(--color-background);
-  border: 1px solid var(--color-background-alt);
-  border-radius: calc(var(--s0) / 2);
-  margin-bottom: var(--s2);
+  padding: var(--space-s);
+  margin-bottom: var(--space-m);
+}
+
+/* Hide mobile header and show sidebar by default (desktop) */
+@media (min-width: 417px) {
+  .mobile-header {
+    display: none;
+  }
+}
+
+/* On mobile, hide sidebar navigation by default */
+@media (max-width: 416px) {
+  .sidebar {
+    display: none;
+  }
+  
+  /* Show sidebar when menu is toggled */
+  .menu-toggle:checked ~ .layout-wrapper .sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-background);
+    z-index: 1000;
+    padding: var(--space-m);
+    overflow-y: auto;
+  }
 }
 
 .menu-toggle {
@@ -227,7 +181,7 @@ li {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: var(--s-1);
+  padding: var(--space-s);
   min-width: 44px;
   min-height: 44px;
   justify-content: center;
@@ -254,53 +208,64 @@ li {
 }
 
 .menu-text {
-  font-size: var(--text-xs);
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--color-text);
 }
 
-/* ========================================
-   CONTENT COMPONENTS
-   ======================================== */
-
-/* Article Text (für längere Texte) */
-.article {
-  font-size: var(--text-m);
-  line-height: var(--line-height-text);
+/* BRAND */
+.brand {
+  margin-bottom: var(--space-m);
 }
 
-.article h2 {
-  margin-top: calc(var(--s3) + var(--s1));
-  margin-bottom: var(--s1);
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: var(--space-s);
 }
 
-.article h3 {
-  margin-top: var(--s3);
-  margin-bottom: var(--s1);
-}
-
-/* Meta Information */
-.meta {
-  font-size: var(--text-s);
+.brand-tagline {
+  font-size: clamp(0.875rem, 2vw, 1rem);
   color: var(--color-text-light);
 }
 
-/* Breadcrumb Navigation */
-.breadcrumb {
-  font-size: var(--text-s);
-  color: var(--color-text-light);
-  margin-bottom: var(--s2);
+/* NAVIGATION */
+.nav-list {
+  list-style: none;
+  padding: 0;
 }
 
-.breadcrumb a {
-  color: var(--color-accent);
+.nav-list li {
+  margin-bottom: var(--space-s);
 }
 
-/* Content Grid */
+.nav-list a {
+  display: block;
+  padding: var(--space-s);
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-list a:hover, .nav-active {
+  background: var(--color-accent);
+  color: white;
+  text-decoration: none;
+}
+
+.nav-separator {
+  height: 1px;
+  background: var(--color-text-light);
+  margin: var(--space-s) 0;
+  opacity: 0.3;
+}
+
+/* CONTENT GRID */
 .content-grid {
   display: grid;
-  gap: var(--s2);
+  gap: var(--space-m);
 }
 
 @container (min-width: 600px) {
@@ -317,52 +282,42 @@ li {
   margin-top: 4px;
 }
 
-/* Cards */
-.card {
-  background: var(--color-background);
-  border: 1px solid var(--color-background-alt);
-  padding: var(--s2);
-  border-radius: calc(var(--s0) / 2);
-  margin-bottom: var(--s2);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* BREADCRUMB */
+.breadcrumb {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-m);
 }
 
-/* Buttons */
-.button {
-  background: var(--color-accent);
-  color: white;
-  padding: var(--s-1) var(--s2);
-  border: none;
-  border-radius: calc(var(--s0) / 4);
-  font-size: inherit;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  font-family: inherit;
+.breadcrumb a {
+  color: var(--color-accent);
 }
 
-.button:hover {
-  background: var(--color-accent-dark);
-  color: white;
-  text-decoration: none;
-}
-
-.button-secondary {
-  background: var(--color-text-light);
+/* UTILITIES */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ========================================
-   RESPONSIVE TYPOGRAPHY
+   ANWEISUNGEN FÜR CLAUDE CODE
+   ========================================
+   
+   KOMPAKTES SYSTEM:
+   - 3 Spacing-Werte: --space-s, --space-m, --space-l
+   - 4 Text-Größen: Direkte clamp() in body, h1/h2, h3-h6, small
+   - Every-Layout Sidebar: Automatisches Wrapping bei ~417px
+   - Keine Font-Toggles: Eine klare Typografie
+   
+   ERWEITERUNG:
+   - Neue Komponenten mit bestehenden Variablen aufbauen
+   - Container Queries statt Media Queries nutzen
+   - Semantic CSS-Klassen, keine Utilities
+   
+   WARTUNG:
+   - Minimal: Nur 6 Farben, 3 Spacing-Werte
+   - Fluid: Alles skaliert automatisch
+   - DRY: Variablen für alle wiederkehrenden Werte
+   
    ======================================== */
-
-/* Mobile: Typography passt sich automatisch durch clamp() an */
-@media (max-width: 768px) {
-  .container, .layout-wrapper {
-    padding: 0 var(--s-1);
-  }
-  
-  /* Kompaktere Abstände auf mobil */
-  .article h2 {
-    margin-top: var(--s3);
-  }
-}

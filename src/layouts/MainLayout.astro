@@ -22,10 +22,11 @@ const navItems = [
 ---
 
 <BaseLayout title={title} description={description}>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  
   <!-- Mobile Header -->
   <header class="mobile-header">
-    <div class="mobile-menu">
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <div>
       <label for="menu-toggle" class="menu-button">
         <div class="hamburger">
           <span></span>
@@ -35,19 +36,18 @@ const navItems = [
         <span class="menu-text">MENU</span>
       </label>
     </div>
-    <div class="logo">
-      <h3>Dr. David Hamann</h3>
-    </div>
   </header>
 
   <div class="layout-wrapper">
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-      <div class="logo">
-        <h2>Dr. David Hamann</h2>
-        <p class="meta">Archivrecherche</p>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="brand">
+        <div class="brand-name">Dr. David Hamann</div>
+        <div class="brand-tagline">Archivrecherche</div>
       </div>
-      <ul class="nav-list">
+      
+      <nav>
+        <ul class="nav-list">
         {navItems.map((item) => (
           <li>
             <a 
@@ -58,8 +58,9 @@ const navItems = [
             </a>
           </li>
         ))}
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </div>
     
     <!-- Main Content -->
     <main class="content">
@@ -68,50 +69,3 @@ const navItems = [
   </div>
 </BaseLayout>
 
-<style>
-  /* Mobile menu styles */
-  @media (max-width: 417px) {
-    .mobile-header {
-      display: flex;
-    }
-    
-    .layout-wrapper .sidebar {
-      display: none; /* Hide desktop sidebar on mobile */
-    }
-  }
-
-  @media (min-width: 418px) {
-    .mobile-header {
-      display: none; /* Hide mobile header on desktop */
-    }
-  }
-
-  /* CSS-only mobile menu toggle */
-  .menu-toggle:checked ~ .mobile-nav {
-    display: block;
-  }
-
-  .mobile-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-background-alt);
-    padding: var(--s1);
-    border-radius: 0 0 calc(var(--s0) / 2) calc(var(--s0) / 2);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  .mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .mobile-nav a {
-    display: block;
-    padding: var(--s-1);
-    border-radius: calc(var(--s0) / 4);
-  }
-</style>
