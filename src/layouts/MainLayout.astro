@@ -24,9 +24,9 @@ const navItems = [
 <BaseLayout title={title} description={description}>
   <input type="checkbox" id="menu-toggle" class="menu-toggle">
   
-  <!-- Mobile Header -->
-  <header class="mobile-header">
-    <div>
+  <div class="grid-container">
+    <!-- Column 1: Hamburger Space -->
+    <div class="hamburger-column">
       <label for="menu-toggle" class="menu-button">
         <div class="hamburger">
           <span></span>
@@ -36,36 +36,39 @@ const navItems = [
         <span class="menu-text">MENU</span>
       </label>
     </div>
-  </header>
-
-  <div class="layout-wrapper">
-    <!-- Sidebar -->
-    <div class="sidebar">
+    
+    <!-- Column 2: Main Content Column -->
+    <div class="main-column">
       <div class="brand">
         <div class="brand-name">Dr. David Hamann</div>
         <div class="brand-tagline">Archivrecherche</div>
       </div>
       
-      <nav>
-        <ul class="nav-list">
-        {navItems.map((item) => (
-          <li>
-            <a 
-              href={item.href} 
-              class={currentPath === item.href ? 'nav-active' : ''}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-        </ul>
-      </nav>
+      <div class="layout-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <nav>
+            <ul class="nav-list">
+            {navItems.map((item) => (
+              <li>
+                <a 
+                  href={item.href} 
+                  class={currentPath === item.href ? 'nav-active' : ''}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <main class="content">
+          <slot />
+        </main>
+      </div>
     </div>
-    
-    <!-- Main Content -->
-    <main class="content">
-      <slot />
-    </main>
   </div>
 </BaseLayout>
 

@@ -8,15 +8,16 @@ This is Dr. David Hamann's professional website for historical archive research 
 
 ## Architecture
 
-- **Project Type**: Static website (planned: Astro 4.x with statichost.eu deployment)
-- **Current State**: Content and design system development phase
-- **Content Structure**: Markdown files with frontmatter in `/content/` directory
-- **Styling**: Custom CSS system using Every-Layout principles, fluid typography, and container queries
+- **Project Type**: Production-ready Astro 4.x static website
+- **Current State**: Complete website with 12 pages, ready for statichost.eu deployment
+- **Content Structure**: Astro pages in `/src/pages/` with nested routing
+- **Styling**: Optimized CSS system using Every-Layout principles, fluid typography, and container queries
 
 ### Directory Structure
-- `content/` - Markdown content files organized by page hierarchy
+- `src/pages/` - Astro pages with nested routing (12 complete pages)
+- `src/layouts/` - Layout components (BaseLayout, MainLayout)
+- `src/styles/` - Optimized CSS system with typography variables
 - `assets/` - Images and documents
-- `styles/` - CSS files (global.css with comprehensive design system)
 - `design-system.html` - Live preview of all design components
 
 ### Key Pages
@@ -72,10 +73,10 @@ This is Dr. David Hamann's professional website for historical archive research 
 
 ## Development Notes
 
-### No Build System Yet
-- No package.json, webpack, or build process currently
-- Pure HTML/CSS development at present
-- Planning: Astro 4.x implementation with @astrojs/sitemap and astro-seo
+### Astro 4.x Build System
+- Complete Astro setup with @astrojs/sitemap and astro-seo
+- NPM scripts: `dev` for development, `build` for production
+- TypeScript support with tsconfig.json
 
 ### CSS Philosophy
 - Composable and DRY principles
