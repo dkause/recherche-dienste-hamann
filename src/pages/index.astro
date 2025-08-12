@@ -1,51 +1,105 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from '../layouts/MainLayout.astro'
+import { Image } from 'astro:assets'
+import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
 ---
 
-<MainLayout 
-  title="Dr. David Hamann - Historische Forschung & Archivrecherche"
-  description="Professionelle Archivrecherche, Transkription alter Handschriften und Lektorat. Spezialisiert auf NS-Zeit und Zweiten Weltkrieg."
-  currentPath="/"
+<MainLayout
+  title='Dr. David Hamann - Historische Forschung & Archivrecherche'
+  description='Professionelle Archivrecherche, Transkription alter Handschriften und Lektorat. Spezialisiert auf NS-Zeit und Zweiten Weltkrieg.'
+  currentPath='/'
 >
   <article>
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+    <nav class='breadcrumb' aria-label='Breadcrumb'>
       <span>Startseite</span>
     </nav>
 
     <h1>Herzlich willkommen!</h1>
 
-    <p >Mein Name ist Dr. David Hamann — Ihr kompetenter Partner für historische Forschungsprojekte. Ob wissenschaftliche Arbeit, Familienforschung oder privates Interessengebiet: Mit meiner langjährigen Erfahrung unterstütze und berate ich Sie bei Archivrecherchen, der Transkription alter Handschriften und dem Lektorat wissenschaftlicher Publikationen.</p>
-
-    <p><strong>Wie kann ich Sie unterstützen?</strong> <a href="/kontakt/">→ Kontakt</a></p>
-
+    <p>
+      Mein Name ist Dr. David Hamann — Ihr kompetenter Partner für historische
+      Forschungsprojekte. Ob wissenschaftliche Arbeit, Familienforschung oder
+      privates Interessengebiet: Mit meiner langjährigen Erfahrung unterstütze
+      und berate ich Sie bei Archivrecherchen, der Transkription alter
+      Handschriften und dem Lektorat wissenschaftlicher Publikationen.
+    </p>
+    <Image
+      src={hausDerArbeitImage}
+      alt='Keller voll mit ungeordneten Bücherstapeln im Haus der Arbeit der Deutschen Arbeitsfront DAF Gau Schlesien'
+      class='index-image'
+    />
     <h2>Meine Expertise</h2>
 
-        <h3><a href="/recherche/">Recherche</a></h3>
-        <p>Archive und ihre Bürokratie sind eine Welt für sich — ich finde, was Sie suchen. In Berlin, deutschlandweit und im Ausland.</p>
-        <h3><a href="/transkription/">Transkription</a></h3>
-        <p>Ob Sütterlin, Kurrentschrift oder schlicht schwer lesbare Handschriften — ich entziffere für Sie alles: von ganzen Akten bis hin zu privaten Postkarten.</p>
+    <h3><a href='/recherche/'>Recherche</a></h3>
+    <p>
+      Archive und ihre Bürokratie sind eine Welt für sich — ich finde, was Sie
+      suchen. In Berlin, deutschlandweit und im Ausland.
+    </p>
+    <h3><a href='/transkription/'>Transkription</a></h3>
+    <p>
+      Ob Sütterlin, Kurrentschrift oder schlicht schwer lesbare Handschriften —
+      ich entziffere für Sie alles: von ganzen Akten bis hin zu privaten
+      Postkarten.
+    </p>
 
-        <h3>Lektorat</h3>
-        <p>Von der Strukturberatung bis zum finalen Feinschliff — ich lektoriere Ihre geschichtswissenschaftliche Publikation.</p>
-        <a href="/kontakt/" class="button button-secondary">Kontakt</a>
+    <h3>Lektorat</h3>
+    <p>
+      Von der Strukturberatung bis zum finalen Feinschliff — ich lektoriere Ihre
+      geschichtswissenschaftliche Publikation.
+    </p>
+    <a href='/kontakt/' >Kontakt</a>
 
     <h2>Meine Referenzen</h2>
 
-    <p>Seit über 16 Jahren arbeite ich als freiberuflicher Historiker — für Universitäten, Stiftungen, Museen, Historiker:innen, Promovierende und Studierende, Journalist:innen, Autor:innen, Freund:innen historischer Spezialgebiete, Sammler:innen, Genealog:innen und zahlreiche Privatkund:innen.</p>
+    <p>
+      Seit über 16 Jahren arbeite ich als freiberuflicher Historiker — für
+      Universitäten, Stiftungen, Museen, Historiker:innen, Promovierende und
+      Studierende, Journalist:innen, Autor:innen, Freund:innen historischer
+      Spezialgebiete, Sammler:innen, Genealog:innen und zahlreiche
+      Privatkund:innen.
+    </p>
 
     <h2>Mein Spezialgebiet</h2>
 
-    <p>Ich bin spezialisiert auf die Geschichte des <a href="/nationalsozialismus/">Nationalsozialismus</a> und des <a href="/zweiter-weltkrieg/">Zweiten Weltkriegs</a>.<br>
-    Weitere Schwerpunkte: die Geschichte Preußens und Deutschlands (18.–20. Jh.), jüdische Geschichte, Migrationsgeschichte, Wissenschaftsgeschichte sowie DDR-Geschichte.</p>
+    <p>
+      Ich bin spezialisiert auf die Geschichte des <a
+        href='/nationalsozialismus/'>Nationalsozialismus</a
+      > und des <a href='/zweiter-weltkrieg/'>Zweiten Weltkriegs</a>.<br />
+      Weitere Schwerpunkte: die Geschichte Preußens und Deutschlands (18.–20. Jh.),
+      jüdische Geschichte, Migrationsgeschichte, Wissenschaftsgeschichte sowie DDR-Geschichte.
+    </p>
 
     <h3>Spezialisierte Services</h3>
     <ul>
-      <li><a href="/nationalsozialismus/personalunterlagen/">NSDAP-Mitgliedschaften & SS-Personalunterlagen</a></li>
-      <li><a href="/nationalsozialismus/dokumente/">NS-Dokumente transkribieren</a></li>
-      <li><a href="/zweiter-weltkrieg/militaerakten/">Wehrmacht-Personalakten</a></li>
-      <li><a href="/zweiter-weltkrieg/feldpost/">Feldpostbriefe & Kriegstagebücher</a></li>
+      <li>
+        <a href='/nationalsozialismus/personalunterlagen/'
+          >NSDAP-Mitgliedschaften & SS-Personalunterlagen</a
+        >
+      </li>
+      <li>
+        <a href='/nationalsozialismus/dokumente/'>NS-Dokumente transkribieren</a
+        >
+      </li>
+      <li>
+        <a href='/zweiter-weltkrieg/militaerakten/'>Wehrmacht-Personalakten</a>
+      </li>
+      <li>
+        <a href='/zweiter-weltkrieg/feldpost/'
+          >Feldpostbriefe & Kriegstagebücher</a
+        >
+      </li>
     </ul>
 
-    <p><strong>Bei Fragen kontaktieren Sie mich gern</strong> <a href="/kontakt/">→ Kontakt</a></p>
+    <p>
+      <strong>Bei Fragen kontaktieren Sie mich gern</strong>
+      <a href='/kontakt/'>→ Kontakt</a>
+    </p>
   </article>
 </MainLayout>
+<style>
+  .index-image {
+    width: 50%;
+    height: auto;
+  }
+</style>
+class='button button-secondary'
