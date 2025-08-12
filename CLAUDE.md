@@ -125,3 +125,4 @@ Planned tech stack:
 - Bilingual (German/English) support
 - Automated sitemap generation
 - Contact form integration
+- aufgaben für morgen: 1. mobile menu immer collapsed -> everylayout  2. vertikaler text unter menu.
