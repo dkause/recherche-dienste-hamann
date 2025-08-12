@@ -103,6 +103,7 @@ a:hover {
   margin: 0 auto;
   padding: 0 var(--space-m);
   gap: var(--space-m);
+  container-type: inline-size;
 }
 
 .hamburger-column {
@@ -171,14 +172,26 @@ a:hover {
   background: var(--color-text-light);
 }
 
-/* RESPONSIVE */
-@media (max-width: 416px) {
+/* EVERY-LAYOUT SIDEBAR PATTERN */
+.hamburger-column .menu-button {
+  visibility: hidden;
+}
+
+.sidebar {
+  flex-basis: 250px;
+  flex-grow: 1;
+}
+
+/* CONTAINER QUERY: Hamburger vs Sidebar Logic */
+@container (max-width: 800px) {
   .hamburger-column .menu-button {
-    display: flex;
+    visibility: visible;
   }
+
   .sidebar {
     display: none;
   }
+
   .menu-toggle:checked ~ .grid-container .main-column .layout-wrapper .sidebar {
     display: block;
     position: fixed;
@@ -190,12 +203,6 @@ a:hover {
     z-index: 1000;
     padding: var(--space-m);
     overflow-y: auto;
-  }
-}
-
-@media (min-width: 417px) {
-  .hamburger-column .menu-button {
-    display: none;
   }
 }
 
@@ -228,9 +235,24 @@ a:hover {
   background: var(--color-text);
   margin-bottom: 6px;
   border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 .hamburger span:last-child {
   margin-bottom: 0;
+}
+
+/* HAMBURGER TO X TRANSFORMATION */
+.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .menu-text {
@@ -238,6 +260,15 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--color-text);
+}
+
+/* TEXT CHANGE WITH :has() PSEUDO-CLASS */
+.menu-text::after {
+  content: 'MENU';
+}
+
+.hamburger-column:has(.menu-toggle:checked) .menu-text::after {
+  content: 'SCHLIESSEN';
 }
 
 /* BRAND */
@@ -262,7 +293,6 @@ a:hover {
   transform: rotate(180deg);
 }
 
-
 /* NAVIGATION */
 .nav-list {
   list-style: none;
@@ -286,7 +316,6 @@ a:hover {
   color: white;
   text-decoration: none;
 }
-
 
 /* CONTENT GRID */
 .content-grid {
