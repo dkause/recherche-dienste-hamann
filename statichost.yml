@@ -1,3 +1,3 @@
 image: node:18.20.4
 command: npm install && npx astro build
-public_dir: dist
+public: dist
