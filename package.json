@@ -6,11 +6,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "monitor": "node scripts/lighthouse-monitor.js",
+    "report": "node scripts/lighthouse-reporter.js",
+    "report:week": "node scripts/lighthouse-reporter.js console week",
+    "report:month": "node scripts/lighthouse-reporter.js console month",
+    "report:markdown": "node scripts/lighthouse-reporter.js markdown",
+    "report:csv": "node scripts/lighthouse-reporter.js csv",
+    "report:all": "node scripts/lighthouse-reporter.js all"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.2",
     "astro": "^5.12.9",
     "astro-seo": "^0.8.4"
+  },
+  "devDependencies": {
+    "chrome-launcher": "^1.2.0",
+    "lighthouse": "^12.8.1",
+    "playwright": "^1.54.2"
   }
 }

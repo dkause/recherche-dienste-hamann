@@ -1,0 +1,64 @@
+{
+  "runs": [
+    {
+      "timestamp": "2025-08-12T11:04:59.997Z",
+      "date": "12.8.2025",
+      "time": "13:05:00",
+      "url": "https://dkause-recherche-dienste-hamann.statichost.eu/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 95,
+        "bestPractices": 82,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaint": 834.024,
+        "largestContentfulPaint": 834.024,
+        "cumulativeLayoutShift": 0,
+        "speedIndex": 3388.317088000026,
+        "totalBlockingTime": 0,
+        "timeToInteractive": 834.0240000000001
+      },
+      "opportunities": [],
+      "accessibilityIssues": [
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.10/color-contrast).",
+          "score": 0
+        }
+      ],
+      "lighthouseVersion": "12.8.1"
+    },
+    {
+      "timestamp": "2025-08-12T11:14:02.837Z",
+      "date": "12.8.2025",
+      "time": "13:14:02",
+      "url": "https://dkause-recherche-dienste-hamann.statichost.eu/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 95,
+        "bestPractices": 82,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaint": 840.717,
+        "largestContentfulPaint": 840.717,
+        "cumulativeLayoutShift": 0,
+        "speedIndex": 3412.4803400010865,
+        "totalBlockingTime": 0,
+        "timeToInteractive": 840.7170000000001
+      },
+      "opportunities": [],
+      "accessibilityIssues": [
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.10/color-contrast).",
+          "score": 0
+        }
+      ],
+      "lighthouseVersion": "12.8.1"
+    }
+  ]
+}

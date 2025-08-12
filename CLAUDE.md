@@ -104,9 +104,10 @@ This is Dr. David Hamann's professional website for historical archive research 
 
 ## Implementation References
 
-- **PRD**: `/PRD-recherche-dienste.md` - Complete project requirements
-- **Design System**: `/design-system.md` - HTML/CSS component library
-- **Live Preview**: `/design-system.html` - Working examples of all components
+- **PRD**: `/docs/project/PRD-recherche-dienste.md` - Complete project requirements
+- **Design System**: `/docs/design/design-system.md` - HTML/CSS component library
+- **Live Preview**: `/docs/design/design-system.html` - Working examples of all components
+- **Sitemap**: `/docs/reference/SITEMAP.md` - Complete website structure and navigation
 - **Content**: `/content/` directory structure matches final site architecture
 
 ## Deployment
@@ -116,6 +117,18 @@ This is Dr. David Hamann's professional website for historical archive research 
 - **Setup**: Connect GitHub repository via https://www.statichost.eu/docs/git-providers/#github
 - **Build**: Automatic static site generation from repository
 - **Domain**: Custom domain configuration available through statichost.eu
+
+#### Required statichost.yml Configuration
+```yaml
+image: node:20.17.0
+command: rm -rf node_modules package-lock.json && npm install && npx astro build
+public: dist
+```
+
+**Important**: 
+- Node.js 20.17.0+ required for Astro 5.x compatibility
+- Must delete `node_modules` and `package-lock.json` before `npm install` to avoid rollup optional dependency issues
+- Use `public: dist` (not `public_dir: dist`) for output directory
 
 ## Future Development
 
