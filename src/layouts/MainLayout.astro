@@ -1,13 +1,13 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import BaseLayout from './BaseLayout.astro'
 
 interface Props {
-  title: string;
-  description?: string;
-  currentPath?: string;
+  title: string
+  description?: string
+  currentPath?: string
 }
 
-const { title, description, currentPath = '/' } = Astro.props;
+const { title, description, currentPath = '/' } = Astro.props
 
 // Navigation items
 const navItems = [
@@ -17,58 +17,57 @@ const navItems = [
   { href: '/zweiter-weltkrieg/', label: 'Zweiter Weltkrieg' },
   { href: '/transkription/', label: 'Transkription' },
   { href: '/biografie/', label: 'Biografie' },
-  { href: '/kontakt/', label: 'Kontakt' },
-];
+  { href: '/kontakt/', label: 'Kontakt' }
+]
 ---
 
 <BaseLayout title={title} description={description}>
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-  
-  <div class="grid-container">
+  <input type='checkbox' id='menu-toggle' class='menu-toggle' />
+
+  <div class='grid-container'>
     <!-- Column 1: Hamburger Space -->
-    <div class="hamburger-column">
-      <label for="menu-toggle" class="menu-button">
-        <div class="hamburger">
+    <div class='hamburger-column'>
+      <label for='menu-toggle' class='menu-button'>
+        <div class='hamburger'>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <span class="menu-text">MENU</span>
+        <span class='menu-text'>MENU</span>
       </label>
+      <div class='column-brand-name'>Dr. David Hamann</div>
     </div>
-    
+
     <!-- Column 2: Main Content Column -->
-    <div class="main-column">
-      <div class="brand">
-        <div class="brand-name">Dr. David Hamann</div>
-        <div class="brand-tagline">Archivrecherche</div>
-      </div>
-      
-      <div class="layout-wrapper">
+    <div class='main-column'>
+      <div class='brand-name'>Recherche Dienste</div>
+
+      <div class='layout-wrapper'>
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class='sidebar'>
           <nav>
-            <ul class="nav-list">
-            {navItems.map((item) => (
-              <li>
-                <a 
-                  href={item.href} 
-                  class={currentPath === item.href ? 'nav-active' : ''}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            <ul class='nav-list'>
+              {
+                navItems.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class={currentPath === item.href ? 'nav-active' : ''}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </nav>
         </div>
-        
+
         <!-- Main Content -->
-        <main class="content">
+        <main class='content'>
           <slot />
         </main>
       </div>
     </div>
   </div>
 </BaseLayout>
-
