@@ -330,14 +330,14 @@ a:hover {
     color: var(--color-accent);
     text-decoration: none;
   }
-  
+
   .nav-list .nav-active {
     color: var(--color-accent);
     position: relative;
   }
-  
+
   .nav-list .nav-active::before {
-    content: "■";
+    content: '■';
     position: absolute;
     left: -16px;
     color: var(--color-accent);
@@ -350,11 +350,12 @@ a:hover {
 /* CONTENT GRID */
 
 .initial-letter::first-letter {
-  font-size: 200%;
-  float: left;
+  font-size: calc(var(--text-xl) * 2);
+  font-weight: 900;
+  color: var(--color-accent-dark);
+  vertical-align: baseline;
   line-height: 1;
-  margin-right: 8px;
-  margin-top: 4px;
+  margin-right: 2px;
 }
 
 /* BREADCRUMB */
