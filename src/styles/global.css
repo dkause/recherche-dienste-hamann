@@ -281,7 +281,6 @@ a:hover {
   margin-bottom: var(--space-s);
 }
 
-
 /* NAVIGATION */
 .nav-list {
   list-style: none;
@@ -330,6 +329,21 @@ a:hover {
   .nav-list a:hover {
     color: var(--color-accent);
     text-decoration: none;
+  }
+  
+  .nav-list .nav-active {
+    color: var(--color-accent);
+    position: relative;
+  }
+  
+  .nav-list .nav-active::before {
+    content: "■";
+    position: absolute;
+    left: -16px;
+    color: var(--color-accent);
+    font-size: 0.6em;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
