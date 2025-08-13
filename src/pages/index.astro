@@ -9,9 +9,13 @@ import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
   description='Professionelle Archivrecherche, Transkription alter Handschriften und Lektorat. Spezialisiert auf NS-Zeit und Zweiten Weltkrieg.'
   currentPath='/'
 >
+<h1>Herzlich willkommen!</h1>
   <article>
-    <h1>Herzlich willkommen!</h1>
-
+    <Image
+      src={hausDerArbeitImage}
+      alt='Keller voll mit ungeordneten Bücherstapeln im Haus der Arbeit der Deutschen Arbeitsfront DAF Gau Schlesien'
+      class='index-image'
+    />
     <p>
       Mein Name ist Dr. David Hamann — Ihr kompetenter Partner für historische
       Forschungsprojekte. Ob wissenschaftliche Arbeit, Familienforschung oder
@@ -19,11 +23,7 @@ import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
       und berate ich Sie bei Archivrecherchen, der Transkription alter
       Handschriften und dem Lektorat wissenschaftlicher Publikationen.
     </p>
-    <Image
-      src={hausDerArbeitImage}
-      alt='Keller voll mit ungeordneten Bücherstapeln im Haus der Arbeit der Deutschen Arbeitsfront DAF Gau Schlesien'
-      class='index-image'
-    />
+
     <h2>Meine Expertise</h2>
 
     <h3><a href='/recherche/'>Recherche</a></h3>
@@ -43,7 +43,7 @@ import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
       Von der Strukturberatung bis zum finalen Feinschliff — ich lektoriere Ihre
       geschichtswissenschaftliche Publikation.
     </p>
-    <a href='/kontakt/' >Kontakt</a>
+    <a href='/kontakt/'>Kontakt</a>
 
     <h2>Meine Referenzen</h2>
 
@@ -90,7 +90,7 @@ import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
       <strong>Bei Fragen kontaktieren Sie mich gern</strong>
       <a href='/kontakt/'>→ Kontakt</a>
     </p>
-    
+
     <nav class='breadcrumb' aria-label='Breadcrumb'>
       <span>Startseite</span>
     </nav>
@@ -100,5 +100,7 @@ import hausDerArbeitImage from '../assets/Archiv-Haus_der-Arbeit-DAF.jpg'
   .index-image {
     width: 50%;
     height: auto;
+    float: right;
+    margin: 0 0 var(--space-m) var(--space-m);
   }
 </style>
