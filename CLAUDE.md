@@ -138,5 +138,5 @@ Planned tech stack:
 - Bilingual (German/English) support
 - Automated sitemap generation
 - Contact form integration
-- aufgaben für morgen: 1. mobile menu immer collapsed -> everylayout  2. vertikaler text unter menu.
+- aufgaben für morgen: 1. columnbrand verfeinern 2. X und Hamburger fixen 3. Text mehr spaltig bei mehr platz.
 - ich habe meistens einen dev-server zu laufen. Frage ob ud einen starten sollst

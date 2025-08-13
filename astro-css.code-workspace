@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "css.validate": true,
+    "css.lint.unknownAtRules": "ignore",
+    "css.completion.completePropertyWithSemicolon": true,
+    "css.completion.triggerPropertyValueCompletion": true,
+    "html.suggest.html5": true,
+    "html.completion.attributeDefaultValue": "doublequotes",
+    "astro.enable-ts-plugin": true,
+    "files.associations": {
+      "*.astro": "astro"
+    },
+    "emmet.includeLanguages": {
+      "astro": "html"
+    },
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "off", 
+      "strings": "on"
+    },
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "html.hover.documentation": true,
+    "css.hover.documentation": true,
+    "css.hover.references": true
+  },
+  "extensions": {
+    "recommendations": [
+      "astro-build.astro-vscode",
+      "bradlc.vscode-tailwindcss",
+      "formulahendry.auto-rename-tag",
+      "christian-kohler.path-intellisense",
+      "zignd.html-css-class-completion"
+    ]
+  }
+}

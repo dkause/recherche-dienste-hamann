@@ -24,50 +24,45 @@ const navItems = [
 <BaseLayout title={title} description={description}>
   <input type='checkbox' id='menu-toggle' class='menu-toggle' />
 
-  <div class='grid-container'>
-    <!-- Column 1: Hamburger Space -->
-    <div class='hamburger-column'>
-      <label for='menu-toggle' class='menu-button'>
-        <div class='hamburger'>
-          <span></span>
-          <span></span>
-          <span></span>
+  <div class='layout-wrapper'>
+    <!-- Sidebar -->
+    <div class='sidebar'>
+      <div class='mobile-bar'>
+        <label for='menu-toggle' class='menu-button'>
+          <div class='hamburger'>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class='menu-text'></span>
+        </label>
+        
+        <div class='brand-name'>
+          Recherche Dienste<br />Dr. David Hamann
         </div>
-        <span class='menu-text'></span>
-      </label>
-      <div class='column-brand-name'>Dr. David Hamann</div>
-    </div>
-
-    <!-- Column 2: Main Content Column -->
-    <div class='main-column'>
-      <div class='brand-name'>Recherche Dienste</div>
-
-      <div class='layout-wrapper'>
-        <!-- Sidebar -->
-        <div class='sidebar'>
-          <nav>
-            <ul class='nav-list'>
-              {
-                navItems.map((item) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      class={currentPath === item.href ? 'nav-active' : ''}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
-        </div>
-
-        <!-- Main Content -->
-        <main class='content'>
-          <slot />
-        </main>
       </div>
+      
+      <nav>
+        <ul class='nav-list'>
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class={currentPath === item.href ? 'nav-active' : ''}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
+
+    <!-- Main Content -->
+    <main class='content'>
+      <slot />
+    </main>
   </div>
 </BaseLayout>

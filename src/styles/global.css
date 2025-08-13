@@ -1,7 +1,4 @@
-/* ========================================
-   DR. HAMANN DESIGN SYSTEM - COMPACT CSS
-   Fluid Typography + Spacing + Every Layout Sidebar
-   ======================================== */
+/* DR. HAMANN DESIGN SYSTEM - COMPACT CSS */
 
 /* FOUNDATION */
 *,
@@ -55,23 +52,26 @@ body {
 }
 
 h1,
-h2 {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  line-height: 1.2;
-  font-weight: 600;
-  margin-bottom: var(--space-s);
-}
-
+h2,
 h3,
 h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
   line-height: 1.2;
   font-weight: 600;
   margin-bottom: var(--space-s);
+}
+
+h1,
+h2 {
+  font-size: var(--text-xl);
+}
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--text-lg);
 }
 
 p {
@@ -95,38 +95,15 @@ a:hover {
   text-decoration: underline;
 }
 
-/* GRID LAYOUT */
-.grid-container {
-  display: grid;
-  grid-template-columns: auto 1fr;
+/* MAIN LAYOUT CONTAINER & EVERY-LAYOUT SIDEBAR */
+.layout-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-m);
-  gap: var(--space-m);
-  container-type: inline-size;
-}
-
-.hamburger-column {
-  width: 44px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: var(--space-s);
-}
-
-.main-column {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding-top: var(--space-s);
-}
-
-/* SIDEBAR */
-.layout-wrapper {
+  padding: var(--space-m);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-m);
+  container-type: inline-size;
 }
 
 .sidebar {
@@ -155,11 +132,10 @@ a:hover {
   padding: var(--space-s) var(--space-m);
   border: none;
   border-radius: 4px;
-  font-size: inherit;
+  font: inherit;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-family: inherit;
 }
 
 .button:hover {
@@ -172,27 +148,29 @@ a:hover {
   background: var(--color-text-light);
 }
 
-/* EVERY-LAYOUT SIDEBAR PATTERN */
-.hamburger-column .menu-button {
-  visibility: hidden;
-}
-
-.sidebar {
-  flex-basis: 250px;
-  flex-grow: 1;
+/* HAMBURGER MENU VISIBILITY */
+.sidebar .menu-button {
+  display: none;
 }
 
 /* CONTAINER QUERY: Hamburger vs Sidebar Logic */
-@container (max-width: 800px) {
-  .hamburger-column .menu-button {
-    visibility: visible;
+@container (max-width: 650px) {
+  .sidebar .mobile-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-s);
   }
 
-  .sidebar {
+  .sidebar .menu-button {
+    visibility: visible;
+    display: block;
+  }
+
+  .sidebar nav {
     display: none;
   }
 
-  .menu-toggle:checked ~ .grid-container .main-column .layout-wrapper .sidebar {
+  .menu-toggle:checked ~ .layout-wrapper .sidebar nav {
     display: block;
     position: fixed;
     top: 0;
@@ -243,16 +221,16 @@ a:hover {
 }
 
 /* HAMBURGER TO X TRANSFORMATION */
-.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle:checked ~ .grid-container .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+.menu-toggle:checked ~ .layout-wrapper .hamburger span {
+  &:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
 }
 
 .menu-text {
@@ -262,35 +240,21 @@ a:hover {
   color: var(--color-text);
 }
 
-/* TEXT CHANGE WITH :has() PSEUDO-CLASS */
+/* MENU BUTTON TEXT */
 .menu-text::after {
   content: 'MENU';
 }
-
-.hamburger-column:has(.menu-toggle:checked) .menu-text::after {
+.menu-toggle:checked ~ .layout-wrapper .sidebar .menu-text::after {
   content: 'SCHLIESSEN';
 }
 
-/* BRAND */
-
 .brand-name {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   line-height: 1.2;
   font-weight: 600;
   text-transform: uppercase;
-}
-
-.column-brand-name {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  text-transform: uppercase;
-  font-size: 200%;
-  margin-top: var(--space-l);
-  margin-bottom: 0;
-  transform: rotate(180deg);
+  margin-bottom: var(--space-s);
 }
 
 /* NAVIGATION */
@@ -304,16 +268,12 @@ a:hover {
 }
 
 .nav-list a {
+  color: var(--color-text);
   display: block;
-  padding: var(--space-s);
-  border-radius: 4px;
-  transition: background 0.2s;
 }
 
 .nav-list a:hover,
 .nav-active {
-  background: var(--color-accent);
-  color: white;
   text-decoration: none;
 }
 
